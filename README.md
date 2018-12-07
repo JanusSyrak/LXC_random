@@ -2,6 +2,7 @@
 Pushing random numbers between containers and displaying them on a web-server
 
 1. Setting up the containers
+
 The containers are set up, by using the command:
 lxc-create -n C1 -t download -- -d alpine -r 3.4 -a armhf
 
