@@ -8,6 +8,7 @@ The containers are set up, by using the command:
 lxc-create -n C1 -t download -- -d alpine -r 3.4 -a armhf
 
 2. Set up the container C2 to publish random numbers
+
 The script used to generate random numbers, rng.sh, can be seen below:
 
 rng.sh
@@ -22,41 +23,7 @@ socat -v -v tcp-listen:8080,fork,reuseaddr exec:/bin/rng.sh
 
 3. Set up the C1 to host a webserver
 
-C1 is set up to publish the following PHP-script:
-
- index.php
- 
- <!DOCTYPE html>
- 
-<html><body><pre>
-
-<?php 
-
-// create curl resource 
-
-$ch = curl_init(); 
-
-// set url 
-
-curl_setopt($ch, CURLOPT_URL, "C2:8080"); 
-
-//return the transfer as a string 
-
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-
-// $output contains the output string 
-
-$output = curl_exec($ch); 
-
-// close curl resource to free up system resources
-
-curl_close($ch);
-
-print $output;
-
-?>
-
-</body></html>
+C1 is set up to publish the following PHP-script index.php.
   
 4. Set up prerouting
 
