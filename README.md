@@ -9,13 +9,7 @@ lxc-create -n C1 -t download -- -d alpine -r 3.4 -a armhf
 
 2. Set up the container C2 to publish random numbers
 
-The script used to generate random numbers, rng.sh, can be seen below:
-
-rng.sh
-
-#!/bin/ash
-
-dd if=/dev/urandom bs=4 count=16 status=none | od -A none -t u4
+The script used to generate random numbers, rng.sh, can be found in this repos.
 
 The publishing part is handled by socat, using the following scipt:
 
@@ -23,7 +17,7 @@ socat -v -v tcp-listen:8080,fork,reuseaddr exec:/bin/rng.sh
 
 3. Set up the C1 to host a webserver
 
-C1 is set up to publish the following PHP-script index.php.
+C1 is set up to publish the PHP-script index.php.
   
 4. Set up prerouting
 
