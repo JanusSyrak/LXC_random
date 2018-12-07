@@ -9,10 +9,10 @@ lxc-create -n C1 -t download -- -d alpine -r 3.4 -a armhf
 2. Set up the container C2 to publish random numbers
 The script used to generate random numbers, rng.sh, can be seen below:
 
-rng.sh
-#!/bin/ash
+    rng.sh
+    #!/bin/ash
 
-dd if=/dev/urandom bs=4 count=16 status=none | od -A none -t u4
+    dd if=/dev/urandom bs=4 count=16 status=none | od -A none -t u4
 
 The publishing part is handled by socat, using the following scipt:
 
